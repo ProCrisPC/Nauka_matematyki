@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nauka matmy</title>
+        <link rel="stylesheet" href="styl.css">
+    </head>
+    <body>
+        <header>
+            <h1>Tabliczka mnożenia podstawy</h1>
+        </header>
+        <nav>
+            <ul class="pasek">
+                <li class="block"><a href="Nauka_matmy.html">Strona główna</a></li>
+                <li class="block"><a href="tablica.html">Tablica mnożenia</a></li>
+                <li class="block"><a href="autor.html">Twórcy</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section id="zawartosc_strony">
+                <script>
+                    class obliczenia{
+                        constructor(x,y,razy,nagroda){
+                            this.x = x;
+                            this.y = y;
+                            this.razy = razy;
+                            this.nagroda = nagroda;
+                        }
+                        zwrot_x(){
+                            return this.x;
+                        }
+                        zwrot_y(){
+                            return this.y;
+                        }
+                        zwrot_razy(){
+                            return this.razy;
+                        }
+                        iloczyn(){
+                            return this.x*this.y;
+                        }
+                        nowy_iloczyn(){
+                            this.x=Math.floor(Math.random()*10);
+                            this.y=Math.floor(Math.random()*10);
+                        }
+                        sprawdz(o){
+                            if(o==this.x*this.y){
+                                this.razy++;
+                            }
+                            else{
+                                this.razy=0;
+                            }
+                            return o==this.x*this.y;
+                        }
+                        nagroda_10x(){
+                            if(this.razy>0){
+                                if(this.razy%10==0){
+                                    this.nagroda++;
+                                }
+                                return this.razy%10==0;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                        daj_nagroda(){
+                            return this.nagroda;
+                        }
+                    }
+                    let gracz = new obliczenia(Math.floor(Math.random()*10),Math.floor(Math.random()*10),0,0);
+                    function sprawdz(){
+                        const zdjecie = "<img src=\"albert_Einsteina.jpg\" alt=\"IQ+\">";
+                        if(gracz.sprawdz(document.getElementById("iloczyn").value)){
+                            document.getElementById("odpowiedz").innerHTML="Poprawna odpowiedz. Twoj steak odpowiedz wynosi:"+gracz.zwrot_razy();
+                        }
+                        else{
+                            document.getElementById("odpowiedz").innerHTML="Błędna odpowiedz. Twoj steak odpowiedzi się resetuje!";
+                        }
+                        gracz.nowy_iloczyn();
+                        if(gracz.nagroda_10x()){
+                            document.getElementById("nagroda").innerHTML="Gratulacje, otrzymujesz nagrode i razem masz:"+gracz.daj_nagroda()+"<br>";
+                            for(let i=gracz.daj_nagroda();i>0;i--){
+                                document.getElementById("nagroda").innerHTML += zdjecie;
+                            }
+                        }
+                        document.getElementById("liczby").innerHTML=gracz.zwrot_x()+' x '+gracz.zwrot_y()+' = ?';
+                    }
+                </script>
+                <h2>Oblicz iloczyn:</h2>
+                <h2 id="liczby">
+                    <script>
+                        document.write(gracz.zwrot_x(),' x ',gracz.zwrot_y(),' = ?');
+                    </script>
+                </h2>
+                <label>Wpisz wynik</label><br>
+                <input type="number" name="iloczyn" id="iloczyn" title="Wpisz wynik"><br>
+                <button onclick="sprawdz()">Sprawdz wynik</button>
+                <h3 id="odpowiedz"></p>
+                <h3 id="nagroda"></p> 
+            </section>
+        </main>
+        <footer>
+            <p>Krzysztof Sloderbach @ 2023</p>
+        </footer>
+    </body>
+</html>

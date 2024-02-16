@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nauka matmy</title>
+        <link rel="stylesheet" href="styl.css">
+    </head>
+    <body>
+        <header>
+            <h1>Tabliczka mnożenia podstawy</h1>
+        </header>
+        <nav>
+            <ul class="pasek">
+                <li class="block"><a href="Nauka_matmy.html">Strona główna</a></li>
+                <li class="block"><a href="tablica.html">Tablica mnożenia</a></li>
+                <li class="block"><a href="autor.html">Twórcy</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section id="zawartosc_strony">
+                <script>
+                    document.write("<table><caption>Tabliczka mnożenia</caption>");
+                        for(let i=1;i<=10;i++){
+                            document.write("<tr>");
+                            for(let j=1;j<=10;j++){
+                                document.write("<td>"+i*j+"</td>");
+                            }
+                            document.write("</tr>");
+                        }
+                    document.write("</table>");
+                </script>
+            </section>
+        </main>
+        <footer>
+            <p>Krzysztof Sloderbach @ 2023</p>
+        </footer>
+    </body>
+</html>
